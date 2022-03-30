@@ -48,4 +48,4 @@ function calculateExercises(daysArray: number[], target: number): ICalculateExec
 	return results;
 }
 
-console.log(calculateExercises(inputs, target));
+console.log(calculateExercises(inputs, Number(target)));

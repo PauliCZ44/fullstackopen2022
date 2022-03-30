@@ -1,6 +1,5 @@
-function calculateBmi(height_cm: number, weight_kg: number): string {
+export function calculateBmi(height_cm: number, weight_kg: number): string {
 	const bmi: number = weight_kg / ((height_cm / 100) * (height_cm / 100));
-	console.log(bmi);
 	if (bmi < 18.5) {
 		return "Underweight";
 	} else if (bmi < 25) {
