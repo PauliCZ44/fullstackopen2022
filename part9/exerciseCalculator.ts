@@ -8,6 +8,20 @@ interface ICalculateExecrisesResults {
 	average: number;
 }
 
+if (process.argv.length <= 3) {
+	throw new Error("ERROR: You must enter at least one day of training!");
+}
+
+const inputs = process.argv.slice(2, process.argv.length).map((i) => {
+	if (!isNaN(Number(i))) {
+		return parseFloat(i);
+	} else {
+		throw new Error("Provided values were not numbers! Your input was: '" + i + "' \n");
+	}
+});
+
+const target = inputs.shift();
+
 function calculateExercises(daysArray: number[], target: number): ICalculateExecrisesResults {
 	let average = daysArray.reduce((a, b) => a + b, 0) / daysArray.length;
 	let rating: number;
@@ -34,12 +48,4 @@ function calculateExercises(daysArray: number[], target: number): ICalculateExec
 	return results;
 }
 
-console.log(calculateExercises([3, 0, 2, 4.5, 4, 3, 1], 2));
-
-// { periodLength: 7,
-//   trainingDays: 5,
-//   success: false,
-//   rating: 2,
-//   ratingDescription: 'not too bad but could be better',
-//   target: 2,
-//   average: 1.9285714285714286 }
+console.log(calculateExercises(inputs, target));

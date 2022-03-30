@@ -12,4 +12,15 @@ function calculateBmi(height_cm: number, weight_kg: number): string {
 	}
 }
 
-console.log(calculateBmi(180, 74));
+if (process.argv.length > 4) {
+	throw new Error("Parameter error! You must include exactly 2 parameters.");
+} else {
+	const [height_cm, weight_kg] = process.argv.slice(2, process.argv.length).map((i) => {
+		if (!isNaN(Number(i))) {
+			return parseFloat(i);
+		} else {
+			throw new Error("Provided values were not numbers! Your input was: '" + i + "' \n");
+		}
+	});
+	console.log(calculateBmi(height_cm, weight_kg));
+}
