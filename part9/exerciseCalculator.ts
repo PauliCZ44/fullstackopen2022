@@ -1,4 +1,6 @@
-interface ICalculateExecrisesResults {
+import { calculateExercises } from './exerciseCalculatorFunction';
+
+export interface ICalculateExecrisesResults {
     periodLength: number;
     trainingDays: number;
     success: boolean;
@@ -23,34 +25,5 @@ const inputs = process.argv.slice(2, process.argv.length).map((i) => {
 });
 
 const target = inputs.shift();
-
-function calculateExercises(
-    daysArray: number[],
-    target: number
-): ICalculateExecrisesResults {
-    const average = daysArray.reduce((a, b) => a + b, 0) / daysArray.length;
-    let rating: number;
-    let ratingDescription: string;
-    if (average > 2) {
-        rating = 3;
-        ratingDescription = 'You did a really good job!';
-    } else if (average > 1) {
-        rating = 2;
-        ratingDescription = 'You did okay!';
-    } else {
-        ratingDescription = 'You did not do well!';
-        rating = 1;
-    }
-    const results = {
-        periodLength: daysArray.length,
-        trainingDays: daysArray.filter((i) => i != 0).length,
-        success: average > target,
-        rating,
-        ratingDescription,
-        target: target,
-        average: average,
-    };
-    return results;
-}
 
 console.log(calculateExercises(inputs, Number(target)));

@@ -13,6 +13,6 @@
         "esModuleInterop": true,
         "declaration": true
     },
-    "include": ["*", ".eslintrc.js"],
+    // "include": [".eslintrc.js"],
     "exclude": ["node_modules", "**/*.spec.ts"]
 }
