@@ -23,3 +23,4 @@ const [height_cm, weight_kg] = process.argv.slice(2, process.argv.length).map((i
 	}
 });
 console.log(calculateBmi(height_cm, weight_kg));
+ 
