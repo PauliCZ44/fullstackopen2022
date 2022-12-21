@@ -24,3 +24,7 @@ export interface Patient {
     gender: string;
     occupation: string;
 }
+
+// Doesns't work
+// export interface PatientNoSsn extends Omit<Patient, 'ssn'> {}
+export type PatientNoSsn = Omit<Patient, 'ssn'>;

@@ -1,4 +1,5 @@
 import express from 'express';
+import patientService from '../services/patientService';
 
 const router = express.Router();
 
@@ -6,7 +7,7 @@ const router = express.Router();
 // http://localhost:3000/api/patients/
 
 router.get('/', (_req, res) => {
-    res.send('Fetching all patients!');
+    res.send(patientService.getPatientsNoSsn());
 });
 
 export default router;
