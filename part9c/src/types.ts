@@ -25,6 +25,8 @@ export interface Patient {
     occupation: string;
 }
 
+export type NewPatient = Omit<Patient, 'id'>;
+
 // Doesns't work
 // export interface PatientNoSsn extends Omit<Patient, 'ssn'> {}
 export type PatientNoSsn = Omit<Patient, 'ssn'>;
